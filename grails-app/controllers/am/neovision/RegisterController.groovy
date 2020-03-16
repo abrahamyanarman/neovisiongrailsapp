@@ -1,8 +1,8 @@
 package am.neovision
 
+import grails.gorm.transactions.Transactional
 import org.springframework.security.access.annotation.Secured
 
-import javax.transaction.Transactional
 import javax.xml.bind.ValidationException
 
 @Transactional

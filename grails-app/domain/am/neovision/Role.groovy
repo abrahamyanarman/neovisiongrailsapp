@@ -17,7 +17,10 @@ class Role implements Serializable {
 		authority nullable: false, blank: false, unique: true
 	}
 
+	String toString() {
+		authority
+	}
+
 	static mapping = {
-		cash false
 	}
 }
