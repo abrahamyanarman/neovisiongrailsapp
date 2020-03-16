@@ -11,6 +11,7 @@ class User implements Serializable {
 
     private static final long serialVersionUID = 1
 
+
     String firstName
     String lastName
     String email
@@ -35,10 +36,15 @@ class User implements Serializable {
         photoUri nullable: true,blank: true
     }
 
+
+
+    static transients = ['springSecurityService']
+
     static mapping = {
 	    password column: '`password`'
         firstName column: '`first_name`'
         lastName column: '`last_name`'
         photoUri column: '`photo_uri`'
+
     }
 }

@@ -11,7 +11,8 @@ class RegisterController {
 
     static allowedMethods = [register: "POST"]
 
-    def index() { }
+    def index() {
+    }
 
     def register() {
         if(!params.password.equals(params.repassword)) {
@@ -20,7 +21,13 @@ class RegisterController {
             return
         } else {
             try {
-                def user = User.findByUsername(params.username)?: new User(username: params.username, password: params.password, fullname: params.fullname).save()
+                def user = User.findByUsername(params.username)?: new User(
+                        firstName:params.firstName,
+                        lastName: params.lastName,
+                        email: params.email,
+                        photoUri: params.photoUri,
+                        username: params.username,
+                        password: params.password).save()
                 def role = Role.get(params.role.id)
                 if(user && role) {
                     UserRole.create user, role
@@ -45,3 +52,5 @@ class RegisterController {
         }
     }
 }
+
+

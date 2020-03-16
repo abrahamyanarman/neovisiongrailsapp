@@ -28,7 +28,7 @@
             <sec:ifLoggedIn>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        <sec:loggedInUserInfo field='fullname'/>
+                        <sec:loggedInUserInfo field='fullName'/>
                     </a>
                     <div class="dropdown-menu navbar-dark">
                         <g:form controller="logout">
