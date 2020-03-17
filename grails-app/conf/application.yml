@@ -10,9 +10,9 @@ grails:
             events: false
 info:
     app:
-        name: '@info.app.name@'
-        version: '@info.app.version@'
-        grailsVersion: '@info.app.grailsVersion@'
+        name: '@show.app.name@'
+        version: '@show.app.version@'
+        grailsVersion: '@show.app.grailsVersion@'
 spring:
     jmx:
         unique-names: true
@@ -92,6 +92,10 @@ management:
             unique-names: true
 
 ---
+server:
+    session:
+        timeout: 3600
+
 #hibernate:
 #    hbm2ddl:
 #        auto: create

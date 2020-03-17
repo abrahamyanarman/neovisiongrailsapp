@@ -1,0 +1,8 @@
+import am.neovision.User
+
+model {
+    User user
+}
+json{
+    user g.render(template: show,model: [user: user])
+}
