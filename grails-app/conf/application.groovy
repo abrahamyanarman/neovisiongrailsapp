@@ -16,7 +16,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/css/**',      access: ['permitAll']],
 	[pattern: '/**/images/**',   access: ['permitAll']],
 	[pattern: '/**/favicon.ico', access: ['permitAll']],
-	[pattern: '/user/**',        access: 'ROLE_USER'],
+	[pattern: '/user/**',        access: ['ROLE_USER','ROLE_ADMIN']],
 	[pattern: '/admin/**',       access: 'ROLE_ADMIN']
 
 ]
@@ -30,12 +30,58 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
+
 dataSource {
+	pooled = true
+	driverClassName = "com.mysql.cj.jdbc.Driver"
+	username = "root"
+	password = "root"
+	dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+	properties {
+		maxActive = 50
+		maxIdle = 25
+		minIdle = 5
+		initialSize = 5
+		minEvictableIdleTimeMillis = 1800000
+		timeBetweenEvictionRunsMillis = 1800000
+		maxWait = 10000
+		ValidationQuery = 'select 1'
+	}
+}
+
+hibernate {
+	cache.use_second_level_cache = false
+	cache.use_query_cache = false
+	cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory'
+}
+// environment specific settings
+environments {
+	development {
+		dataSource {
+			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+			url = "jdbc:mysql://localhost:3306/neovisiongrailsapp?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT"
+		}
+	}
+	test {
+		dataSource {
+			dbCreate = "update"
+			url = "jdbc:mysql://localhost:3306/neovisiongrailsapp?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT"
+		}
+	}
+	production {
+		dataSource {
+			dbCreate = "update"
+			url = "jdbc:mysql://localhost:3306/neovisiongrailsapp?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT"
+		}
+	}
+}
+
+/*dataSource {
 	pooled = true
 	dbCreate = "update"
 	url = "jdbc:mysql://localhost:3306/neovisiongrailsapp?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT"
 	driverClassName = "com.mysql.cj.jdbc.Driver"
-	dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+	dialect = org.hibernate.dialect.MySQL8Dialect
 	username = "root"
 	password = "root"
 	type = "com.zaxxer.hikari.HikariDataSource"
@@ -58,5 +104,5 @@ dataSource {
 		jdbcInterceptors = "ConnectionState;StatementCache(max=200)"
 		defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
 	}
-}
+}*/
 

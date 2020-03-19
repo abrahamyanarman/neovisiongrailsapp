@@ -86,69 +86,29 @@ grails:
                 scriptlet: html
                 taglib: none
                 staticparts: none
-management:
-    endpoints:
-        jmx:
-            unique-names: true
-
----
-server:
-    session:
-        timeout: 3600
-
-#hibernate:
-#    hbm2ddl:
-#        auto: create
-#    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-#    cache:
-#        queries: false
-#        use_second_level_cache: false
-#        use_query_cache: false
-#spring:
-#    datasource:
-#        driverClassName: com.mysql.jdbc.Driver
-#        url:   jdbc:mysql://127.0.0.1:3306/neovisiongrailsapp
-#        username: root
-#        password: root
-#dataSource:
+#datasource:
 #    pooled: true
 #    jmxExport: true
-#    driverClassName: org.h2.Driver
-#    username: sa
-#    password: ''
+#    dbCreate: "update"
+#    url: "jdbc:mysql://localhost:3306/neovisiongrailsapp?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT"
+#    driverClassName: "com.mysql.cj.jdbc.Driver"
+#    dialect: org.hibernate.dialect.MySQL8Dialect
+#    username: "root"
+#    password: "root"
 
-#environments:
-#    development:
-#        dataSource:
-#            pooled: true
-#            jmxExport: true
-#            driverClassName: com.mysql.cj.jdbc.Driver
-#            url:   jdbc:mysql://127.0.0.1:3306/neovisiongrailsapp?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT
-#            username: root
-#            password: "root"
-#    test:
-#        dataSource:
-#            dbCreate: update
-#            url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-#    production:
-#        dataSource:
-#            dbCreate: none
-#            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-#            properties:
-#                jmxEnabled: true
-#                initialSize: 5
-#                maxActive: 50
-#                minIdle: 5
-#                maxIdle: 25
-#                maxWait: 10000
-#                maxAge: 600000
-#                timeBetweenEvictionRunsMillis: 5000
-#                minEvictableIdleTimeMillis: 60000
-#                validationQuery: SELECT 1
-#                validationQueryTimeout: 3
-#                validationInterval: 15000
-#                testOnBorrow: true
-#                testWhileIdle: true
-#                testOnReturn: false
-#                jdbcInterceptors: ConnectionState
-#                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+
+
+
+spring:
+    jmx:
+        unique-names: true
+---
+security:
+    jwt:
+      token:
+         expireLength: 3600000
+
+serverPassword: password
+
+

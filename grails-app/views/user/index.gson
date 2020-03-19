@@ -1,0 +1,13 @@
+import am.neovision.User
+
+model {
+    User user
+}
+json{
+    firstName user.firstName
+    lastName user.lastName
+    email user.email
+    photoUri user.photoUri
+    username user.username
+    id user.id
+}

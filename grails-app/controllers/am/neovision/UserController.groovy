@@ -7,12 +7,13 @@ class UserController {
 
     UserService userService
 
-    def index() { }
+    def index() {
+        respond(authenticatedUser)
+    }
 
     @Secured(value=["hasRole('ROLE_ADMIN')"], httpMethod='GET')
-    def show(id){
-       User user = userService.findById(id)
-       [user:user]
+    def show(){
+        respond(authenticatedUser)
     }
 }
 

@@ -3,14 +3,14 @@ package am.neovision
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
+       /* "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
             }
-        }
+        }*/
 
         "/"(view:"/index")
-        "/login"(controller: 'login',action: 'auth')
+        "/api/auth"(controller: 'login',action: 'login')
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

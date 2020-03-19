@@ -3,10 +3,7 @@ package am.neovision
 import grails.plugin.springsecurity.userdetails.GrailsUser
 import org.springframework.security.core.GrantedAuthority
 
-
 class CustomUserDetails extends GrailsUser {
-
-    final String fullName
     /**
      * Constructor.
      *
@@ -22,10 +19,7 @@ class CustomUserDetails extends GrailsUser {
      *        presented the correct username and password and the user is enabled. Not null.
      * @param id the id of the domain class instance used to populate this
      */
-    CustomUserDetails(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
-                      boolean accountNonLocked, Collection<GrantedAuthority> authorities, Object id,String fullName,
-                        String firstName,String lastName,String email,String photoUri) {
+    CustomUserDetails(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<GrantedAuthority> authorities, Object id) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, id)
-        this.fullName = fullName
     }
 }
