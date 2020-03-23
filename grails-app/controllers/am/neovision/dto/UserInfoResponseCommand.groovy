@@ -1,7 +1,12 @@
 package am.neovision.dto
 
 import am.neovision.Role
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.annotation.JsonSerialize
 
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 class UserInfoResponseCommand implements Serializable {
 
     private static final long serialVersionUID = 1
