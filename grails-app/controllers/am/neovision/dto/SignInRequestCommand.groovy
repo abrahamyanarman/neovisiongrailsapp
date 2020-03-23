@@ -7,6 +7,7 @@ import grails.validation.Validateable;
 
      String username
      String password
+     boolean rememberMe = false
 
 
 

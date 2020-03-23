@@ -104,10 +104,7 @@ spring:
     jmx:
         unique-names: true
 ---
-security:
-    jwt:
-      token:
-         expireLength: 3600000
+jwtExpireLength: 3600000
 
 serverPassword: password
 

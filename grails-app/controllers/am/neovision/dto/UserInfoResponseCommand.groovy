@@ -60,7 +60,7 @@ class UserInfoResponseCommand implements Serializable {
                 ", passwordExpired=" + passwordExpired +
                 ", authorities=[" + authorities.stream().map{ role ->
             role.toString()
-        }.collect(Set<String>)+"]" +
+        }+"]" +
                 '}';
     }
 }
