@@ -45,6 +45,9 @@ class User implements Serializable, UserDetails {
     boolean isCredentialsNonExpired() {
         return !passwordExpired
     }
+
+
+
     static constraints = {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true

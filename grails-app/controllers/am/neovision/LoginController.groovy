@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody
 
 class LoginController {
 
+    static responseFormats = ['json']
+
     private AuthenticationManager authenticationManager;
     private JwtTokenUtil jwtTokenUtil;
     private MyUserDetailsService userDetailsService;
@@ -38,8 +40,7 @@ class LoginController {
         try {
             authenticate(request.username, request.password);
 
-            userDetails =  userDetailsService
-                    .loadUserByUsername(request.username)
+            userDetails =  userDetailsService.loadUserByUsername(request.username)
         } catch (Exception e) {
             ErrorResponseCommand response = new ErrorResponseCommand(e.getMessage());
             render( new ResponseEntity<>(response, HttpStatus.BAD_REQUEST))
@@ -49,7 +50,8 @@ class LoginController {
         userResponse = userMapper.apply(userDetails);
         userResponse.setToken(token);
 
-         render(userResponse, HttpStatus.OK) as JSON//TODO complate
+        respond userResponse
+
     }
 
 

@@ -10,6 +10,7 @@ import javax.transaction.Transactional
 
 @GrailsCompileStatic
 @ToString(cache=true, includeNames=true, includePackage=false)
+@Transactional
 class UserRole implements Serializable {
 
 	private static final long serialVersionUID = 1

@@ -44,4 +44,23 @@ class UserInfoResponseCommand implements Serializable {
         photoUri nullable: true,blank: true
     }
 
+
+    @Override
+    String toString() {
+        return "UserInfoResponseCommand{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", photoUri='" + photoUri + '\'' +
+                ", username='" + username + '\'' +
+                ", token='" + token + '\'' +
+                ", enabled=" + enabled +
+                ", accountExpired=" + accountExpired +
+                ", accountLocked=" + accountLocked +
+                ", passwordExpired=" + passwordExpired +
+                ", authorities=[" + authorities.stream().map{ role ->
+            role.toString()
+        }.collect(Set<String>)+"]" +
+                '}';
+    }
 }
