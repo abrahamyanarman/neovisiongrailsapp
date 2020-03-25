@@ -4,6 +4,7 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'am.neovision.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'am.neovision.UserRole'
 grails.plugin.springsecurity.authority.className = 'am.neovision.Role'
+grails.plugin.springsecurity.password.algorithm = 'bcrypt'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/h2-console',               access: ['permitAll']],
@@ -105,4 +106,7 @@ environments {
 		defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
 	}
 }*/
+
+
+
 

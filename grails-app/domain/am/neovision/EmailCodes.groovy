@@ -1,0 +1,31 @@
+package am.neovision
+
+import grails.compiler.GrailsCompileStatic
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+
+import javax.transaction.Transactional
+
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='email')
+@ToString(includes='email', includeNames=true, includePackage=false)
+@Transactional
+class EmailCodes implements Serializable  {
+
+    private static final String serialVersionUID = -97598793L
+
+    String email
+    Long code
+    static constraints = {
+        email nullable:false,  blank: false, unique: true
+        code nullable: false, blank: false
+    }
+
+    static mapping = {
+        email column: '`email`'
+        code column: '`code`'
+
+    }
+    static transients = ['springSecurityService']
+
+}

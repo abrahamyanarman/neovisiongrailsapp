@@ -1,6 +1,6 @@
 package am.neovision.dto
 
-import grails.validation.Validateable;
+import grails.validation.Validateable
 
 
  class SignInRequestCommand   implements Validateable{
